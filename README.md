@@ -1,8 +1,27 @@
-# FoodTruckApp
+# Laxmi Food Truck App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.28.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.28. It is a full-stack food truck ordering and management system powered by **Supabase**.
 
-## Development server
+## Key Features
+
+### 🛒 Customer Portal
+- **Home & Browsing**: View available food truck menus.
+- **Cart & Checkout**: Manage item selections and place orders.
+- **Order Confirmation**: Real-time status updates on customer purchases.
+
+### 💼 Admin Dashboard
+- **Dashboard Overview**: Monitor active food truck sales data.
+- **Order Management**: Process incoming customer orders.
+- **Menu Management**: Add, update, or remove menu items dynamically.
+- **Pickup Slots**: Configure available scheduling times for orders.
+
+### ⚙️ Services & Backend
+- **Supabase Integration**: Handles user authentication and database management.
+- **State Services**: Dedicated Angular services for handling `Cart`, `Menu`, `Order`, and `Business` rules.
+
+---
+
+## Development Server
 
 To start a local development server, run:
 
@@ -12,7 +31,7 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+## Code Scaffolding
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
@@ -36,23 +55,13 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running unit tests
+## Running Unit Tests
 
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
 ```bash
 ng test
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
 ## Additional Resources
 
