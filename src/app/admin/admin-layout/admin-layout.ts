@@ -221,12 +221,14 @@ import { AuthService } from '../../services/auth.service';
 export class AdminLayout {
   sidebarOpen = false;
   navItems = [
-    { label: 'Dashboard', icon: 'dashboard', route: '/admin/dashboard' },
-    { label: 'Menu Management', icon: 'restaurant_menu', route: '/admin/menu' },
-    { label: 'Orders', icon: 'receipt_long', route: '/admin/orders' },
-    { label: 'Pickup Slots', icon: 'schedule', route: '/admin/pickup-slots' },
-    { label: 'Store Settings', icon: 'store', route: '/admin/settings' },
-  ];
+  { label: 'Dashboard', icon: 'dashboard', route: '/admin/dashboard' },
+  { label: 'Menu Management', icon: 'restaurant_menu', route: '/admin/menu' },
+  { label: 'Orders', icon: 'receipt_long', route: '/admin/orders' },
+  { label: 'Locations', icon: 'location_on', route: '/admin/locations' },
+  { label: 'Messages', icon: 'inbox', route: '/admin/messages' },
+  { label: 'Pickup Slots', icon: 'schedule', route: '/admin/pickup-slots' },
+  { label: 'Store Settings', icon: 'store', route: '/admin/settings' },
+];
   constructor(private auth: AuthService) {}
   signOut() { this.auth.signOut(); }
 }

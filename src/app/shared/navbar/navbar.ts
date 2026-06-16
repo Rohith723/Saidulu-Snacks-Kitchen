@@ -18,6 +18,7 @@ import { CartService } from '../../services/cart.service';
         <span class="spacer"></span>
         <div class="nav-actions">
           <a mat-button routerLink="/menu" routerLinkActive="active-link">Menu</a>
+          <a mat-button routerLink="/contact" routerLinkActive="active-link">Contact</a>
           <a mat-button routerLink="/cart" class="cart-badge">
             <mat-icon>shopping_cart</mat-icon>
             @if (cartCount() > 0) {

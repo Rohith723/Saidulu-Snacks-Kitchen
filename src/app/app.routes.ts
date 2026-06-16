@@ -24,6 +24,10 @@ export const routes: Routes = [
     loadComponent: () => import('./customer/confirmation/confirmation').then(m => m.Confirmation)
   },
   {
+    path:'contact',
+    loadComponent:()=>import('./customer/contact/contact').then(m=>m.Contact)
+  },
+  {
     path: 'auth/login',
     loadComponent: () => import('./auth/login/login').then(m => m.Login)
   },
@@ -53,6 +57,14 @@ export const routes: Routes = [
         path: 'pickup-slots',
         loadComponent: () => import('./admin/pickup-slots/pickup-slots').then(m => m.PickupSlots)
       },
+      {
+  path: 'locations',
+  loadComponent: () => import('./admin/locations/locations').then(m => m.Locations)
+},
+{
+  path: 'messages',
+  loadComponent: () => import('./admin/messages/messages').then(m => m.Messages)
+},
     ]
   },
   { path: '**', redirectTo: 'home' }

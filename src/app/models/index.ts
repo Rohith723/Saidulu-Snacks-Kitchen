@@ -54,3 +54,24 @@ export interface PickupSlot {
 }
 
 export type OrderStatus = 'pending' | 'preparing' | 'ready' | 'completed' | 'cancelled';
+
+export interface Location {
+  id?: string;
+  name: string;
+  address: string;
+  latitude: number;
+  longitude: number;
+  schedule?: string;
+  is_active: boolean;
+  created_at?: string;
+}
+
+export interface ContactMessage {
+  id?: string;
+  name: string;
+  phone: string;
+  email?: string;
+  message: string;
+  is_read?: boolean;
+  created_at?: string;
+}
