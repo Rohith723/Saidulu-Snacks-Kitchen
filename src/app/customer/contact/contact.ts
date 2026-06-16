@@ -455,18 +455,23 @@ export class Contact implements OnInit {
   }
 
   submitMessage() {
-    if (this.contactForm.invalid) { this.contactForm.markAllAsTouched(); return; }
-    this.sending.set(true);
-    this.locationService.sendMessage(this.contactForm.value).subscribe({
-      next: () => {
-        this.sending.set(false);
-        this.submitted.set(true);
-        this.contactForm.reset();
-      },
-      error: e => {
-        this.sending.set(false);
-        this.snackBar.open('Failed to send. Please try again.', '✕', { duration: 3000, panelClass: 'error-snack' });
-      }
-    });
+  if (this.contactForm.invalid) {
+    this.contactForm.markAllAsTouched();
+    this.snackBar.open('Please check the form — phone must be 10 digits starting with 6-9.', '✕', { duration: 4000, panelClass: 'error-snack' });
+    return;
   }
+  this.sending.set(true);
+  this.locationService.sendMessage(this.contactForm.value).subscribe({
+    next: () => {
+      this.sending.set(false);
+      this.submitted.set(true);
+      this.contactForm.reset();
+    },
+    error: e => {
+      this.sending.set(false);
+      console.error('Contact form error:', e);
+      this.snackBar.open('Failed to send: ' + (e.message || e.details || 'Unknown error'), '✕', { duration: 5000, panelClass: 'error-snack' });
+    }
+  });
+}
 }
