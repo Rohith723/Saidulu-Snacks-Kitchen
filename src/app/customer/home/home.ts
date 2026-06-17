@@ -214,7 +214,7 @@ import { MenuItem, BusinessSettings, Location } from '../../models';
       <!-- Footer -->
       <footer class="footer">
         <div class="app-container">
-          <p>🚚 Street Bites Food Truck · Daily 7 PM – 11 PM</p>
+          <p>🚚 Laxmi Food Truck · Daily 7 PM – 11 PM</p>
           <p class="footer-sub">Pre-order online · Pay at pickup</p>
           <a routerLink="/auth/login" class="admin-link">Admin</a>
         </div>
