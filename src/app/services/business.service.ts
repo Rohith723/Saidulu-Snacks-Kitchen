@@ -28,10 +28,27 @@ export class BusinessService {
       .pipe(map(({ data, error }) => { if (error) throw error; return data as BusinessSettings; }));
   }
 
-  updateSettings(settings: Partial<BusinessSettings>): Observable<BusinessSettings> {
-    return from(this.supabase.client.from('business_settings').update(settings).select().single())
-      .pipe(map(({ data, error }) => { if (error) throw error; return data as BusinessSettings; }));
-  }
+ updateSettings(settings: Partial<BusinessSettings>): Observable<BusinessSettings> {
+  return from(
+    this.supabase.client
+      .from('business_settings')
+      .select('id')
+      .limit(1)
+      .single()
+      .then(({ data: existing, error: fetchError }) => {
+        if (fetchError) throw fetchError;
+        return this.supabase.client
+          .from('business_settings')
+          .update(settings)
+          .eq('id', existing.id)
+          .select()
+          .single();
+      })
+  ).pipe(map((result: any) => {
+    if (result.error) throw result.error;
+    return result.data as BusinessSettings;
+  }));
+}
 
   getPickupSlots(): Observable<PickupSlot[]> {
     return from(this.supabase.client.from('pickup_slots').select('*').eq('is_active', true))
