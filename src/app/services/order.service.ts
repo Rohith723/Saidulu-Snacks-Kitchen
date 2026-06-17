@@ -85,4 +85,25 @@ export class OrderService {
 
     window.open(`https://wa.me/${environment.businessWhatsApp}?text=${encodeURIComponent(message)}`, '_blank');
   }
+
+  notifyCustomerStatusChange(order: Order, newStatus: string): void {
+  const statusMessages: Record<string, string> = {
+    pending: 'Your order has been received and is pending confirmation.',
+    preparing: 'Good news! Your order is now being prepared. 🍳',
+    ready: 'Your order is ready for pickup! 🎉 Come grab it hot and fresh.',
+    completed: 'Thank you for your order! Hope you enjoyed your meal. 😊',
+    cancelled: 'Your order has been cancelled. Please contact us if you have questions.',
+  };
+
+  const message =
+    `🚚 *Laxmi Food Truck Update*\n\n` +
+    `Order ID: ORD-${order.id?.slice(-6).toUpperCase()}\n\n` +
+    `${statusMessages[newStatus] || 'Your order status has been updated.'}\n\n` +
+    `Pickup Time: ${order.pickup_time}`;
+
+  const customerPhone = order.customer_phone.replace(/\D/g, ''); // strip non-digits
+  const phoneWithCountryCode = customerPhone.length === 10 ? `91${customerPhone}` : customerPhone;
+
+  window.open(`https://wa.me/${phoneWithCountryCode}?text=${encodeURIComponent(message)}`, '_blank');
+}
 }

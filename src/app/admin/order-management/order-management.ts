@@ -235,6 +235,15 @@ import { Order } from '../../models';
       h3 { font-size: 1.2rem; margin-bottom: 8px; }
     }
 
+    ::ng-deep .mat-mdc-select-panel {
+  background: white !important;
+}
+.filter-field {
+  .mat-mdc-select-value-text {
+    color: var(--text-primary) !important;
+  }
+}
+
     @media (max-width: 768px) {
       .hide-mobile { display: none !important; }
       .order-summary-row { grid-template-columns: 1.2fr 1.5fr 1fr auto; }
@@ -292,13 +301,19 @@ export class OrderManagement implements OnInit {
   setStatus(status: string) { this.filterForm.patchValue({ status }); this.loadOrders(); }
   clearFilters() { this.filterForm.reset({ status: '', date: null }); this.loadOrders(); }
 
-  updateStatus(order: Order, status: string) {
-    this.updatingId.set(order.id!);
-    this.orderService.updateOrderStatus(order.id!, status).subscribe({
-      next: () => { this.snackBar.open(`Marked as ${status}!`, '✕', { duration: 2000, panelClass: 'success-snack' }); this.updatingId.set(null); this.loadOrders(); },
-      error: e => { this.snackBar.open('Error: ' + e.message, '✕', { duration: 3000, panelClass: 'error-snack' }); this.updatingId.set(null); }
-    });
-  }
+ updateStatus(order: Order, status: string) {
+  this.updatingId.set(order.id!);
+  this.orderService.updateOrderStatus(order.id!, status).subscribe({
+    next: () => {
+      this.snackBar.open(`Marked as ${status}!`, '✕', { duration: 2000, panelClass: 'success-snack' });
+      this.updatingId.set(null);
+      // Auto-notify customer via WhatsApp
+      this.orderService.notifyCustomerStatusChange(order, status);
+      this.loadOrders();
+    },
+    error: e => { this.snackBar.open('Error: ' + e.message, '✕', { duration: 3000, panelClass: 'error-snack' }); this.updatingId.set(null); }
+  });
+}
 
   sendWhatsApp(order: Order) { this.orderService.openWhatsApp(order); }
   shortId(id?: string): string { return id ? id.slice(-6).toUpperCase() : '------'; }
