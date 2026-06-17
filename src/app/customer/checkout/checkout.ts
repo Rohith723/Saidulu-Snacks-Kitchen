@@ -147,6 +147,10 @@ import { PickupSlot } from '../../models';
     .summary-divider { height: 1px; background: var(--border); margin: 16px 0; }
     .summary-total { display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; strong { color: var(--primary); font-size: 1.2rem; } }
     .empty-state { text-align: center; padding: 60px; a { color: var(--primary); cursor: pointer; text-decoration: underline; } }
+    .no-slots-hint {
+  color: #c62828 !important;
+  font-weight: 500;
+}
     @media (max-width: 900px) { .checkout-layout { grid-template-columns: 1fr; } .order-summary { position: static; order: -1; } }
   `]
 })
