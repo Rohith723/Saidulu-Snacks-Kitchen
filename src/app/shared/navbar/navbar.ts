@@ -13,7 +13,7 @@ import { CartService } from '../../services/cart.service';
       <mat-toolbar>
         <a routerLink="/home" class="logo">
           <span class="emoji">🚚</span>
-          Laxmi Foods
+          Saidulu Snacks Kitchen
         </a>
         <span class="spacer"></span>
         <div class="nav-actions">
