@@ -14,7 +14,7 @@ import { AuthService } from '../../services/auth.service';
         <div class="sidebar-header">
           <div class="sidebar-logo">🚚</div>
           <div>
-            <h2>Laxmi Foods </h2>
+            <h2>Saidulu Snacks Kitchen </h2>
             <small>Admin Panel</small>
           </div>
         </div>
