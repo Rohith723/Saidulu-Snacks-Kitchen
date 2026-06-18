@@ -169,15 +169,16 @@ import { MenuItem, BusinessSettings, Location } from '../../models';
                     </span>
                   }
                 </div>
-                <a>
-                  [href]="'https://www.google.com/maps/dir/?api=1&destination=' + selectedLocation()!.latitude + ',' + selectedLocation()!.longitude"
+                <a
+                [href]="'https://www.google.com/maps/dir/?api=1&destination=' + selectedLocation()!.latitude + ',' + selectedLocation()!.longitude"
                   target="_blank"
                   mat-raised-button
                   class="directions-btn">
                   <mat-icon>directions</mat-icon>
                   Get Directions
                 </a>
-              </div>
+                  
+                </div>
 
               <!-- Google Map iframe — no API key needed -->
               <div class="map-frame-wrapper">
