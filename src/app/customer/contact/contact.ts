@@ -407,9 +407,9 @@ import { Location } from '../../models';
   `]
 })
 export class Contact implements OnInit {
-  locations = signal<Location[]>([]);
-  selectedLocation = signal<Location | null>(null);
-  loading = signal(true);
+  // locations = signal<Location[]>([]);
+  // selectedLocation = signal<Location | null>(null);
+  // loading = signal(true);
   sending = signal(false);
   submitted = signal(false);
   contactForm: FormGroup;
@@ -428,31 +428,31 @@ export class Contact implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.locationService.getLocations().subscribe({
-      next: locs => {
-        this.locations.set(locs);
-        if (locs.length > 0) this.selectedLocation.set(locs[0]);
-        this.loading.set(false);
-      },
-      error: () => this.loading.set(false)
-    });
-  }
+  // ngOnInit() {
+  //   this.locationService.getLocations().subscribe({
+  //     next: locs => {
+  //       this.locations.set(locs);
+  //       if (locs.length > 0) this.selectedLocation.set(locs[0]);
+  //       this.loading.set(false);
+  //     },
+  //     error: () => this.loading.set(false)
+  //   });
+  // }
 
-  selectLocation(loc: Location) {
-    this.selectedLocation.set(loc);
-  }
+  // selectLocation(loc: Location) {
+  //   this.selectedLocation.set(loc);
+  // }
 
-  mapUrl(): SafeResourceUrl {
-    const loc = this.selectedLocation();
-    if (!loc) return this.sanitizer.bypassSecurityTrustResourceUrl('');
-    const url = `https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=${loc.latitude},${loc.longitude}&zoom=15`;
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-  }
+  // mapUrl(): SafeResourceUrl {
+  //   const loc = this.selectedLocation();
+  //   if (!loc) return this.sanitizer.bypassSecurityTrustResourceUrl('');
+  //   const url = `https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=${loc.latitude},${loc.longitude}&zoom=15`;
+  //   return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  // }
 
-  openDirections(loc: Location) {
-    window.open(`https://www.google.com/maps/dir/?api=1&destination=${loc.latitude},${loc.longitude}`, '_blank');
-  }
+  // openDirections(loc: Location) {
+  //   window.open(`https://www.google.com/maps/dir/?api=1&destination=${loc.latitude},${loc.longitude}`, '_blank');
+  // }
 
   submitMessage() {
   if (this.contactForm.invalid) {
